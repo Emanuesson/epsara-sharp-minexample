@@ -304,7 +304,7 @@ namespace Epsara {
 			}
 		}
 
-		[DllImport("libepsara-0.dll")]
+		[DllImport("libepsara-0.dll", CallingConvention = CallingConvention.Cdecl)]
 		static extern void epsara_data_measurement_remove(IntPtr raw, IntPtr objekt);
 
 		public void Remove(GLib.Object objekt) {
@@ -331,18 +331,19 @@ namespace Epsara {
 			return ret;
 		}
 
-		[DllImport("libepsara-0.dll")]
+		[DllImport("libepsara-0.dll", CallingConvention = CallingConvention.Cdecl)]
 		static extern void epsara_data_measurement_add(IntPtr raw, IntPtr objekt);
 
 		public void Add(GLib.Object objekt) {
 			epsara_data_measurement_add(Handle, objekt == null ? IntPtr.Zero : objekt.Handle);
 		}
 
-		[DllImport("libepsara-0.dll")]
+		[DllImport("libepsara-0.dll", CallingConvention = CallingConvention.Cdecl)]
 		static extern bool epsara_data_measurement_calculate(IntPtr raw);
 
 		public bool Calculate() {
-			bool raw_ret = epsara_data_measurement_calculate(Handle);
+
+            bool raw_ret = epsara_data_measurement_calculate(Handle);
 			bool ret = raw_ret;
 			return ret;
 		}

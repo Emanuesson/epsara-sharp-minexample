@@ -14,7 +14,7 @@ namespace Epsara {
 		protected DataMatrix(GLib.GType gtype) : base(gtype) {}
 		public DataMatrix(IntPtr raw) : base(raw) {}
 
-		[DllImport("libepsara-0.dll")]
+		[DllImport("libepsara-0.dll", CallingConvention = CallingConvention.Cdecl)]
 		static extern IntPtr epsara_data_matrix_new(int rows, int columns);
 
 		public DataMatrix (int rows, int columns) : base (IntPtr.Zero)
@@ -62,7 +62,27 @@ namespace Epsara {
 			}
 		}
 
-		[DllImport("libepsara-0.dll")]
+        [DllImport("libepsara-0.dll", CallingConvention = CallingConvention.Cdecl)]
+        static extern void epsara_data_matrix_set(IntPtr raw, int i, int j, double x);
+
+        [DllImport("libepsara-0.dll", CallingConvention = CallingConvention.Cdecl)]
+        static extern double epsara_data_matrix_get(IntPtr raw, int i, int j);
+
+        public double this[int i, int j]
+        {
+            get
+            {
+                double raw_ret = epsara_data_matrix_get(Handle, i, j);
+                double ret = raw_ret;
+                return ret;
+            }
+            set
+            {
+                epsara_data_matrix_set(Handle, i, j, value);
+            }
+        }
+
+        [DllImport("libepsara-0.dll", CallingConvention = CallingConvention.Cdecl)]
 		static extern int epsara_data_matrix_mul_elements(IntPtr raw, IntPtr b);
 
 		public int MulElements(Epsara.DataMatrix b) {
@@ -71,28 +91,28 @@ namespace Epsara {
 			return ret;
 		}
 
-		[DllImport("libepsara-0.dll")]
+		[DllImport("libepsara-0.dll", CallingConvention = CallingConvention.Cdecl)]
 		static extern void epsara_data_matrix_set_zero(IntPtr raw);
 
 		public void SetZero() {
 			epsara_data_matrix_set_zero(Handle);
 		}
 
-		[DllImport("libepsara-0.dll")]
+		[DllImport("libepsara-0.dll", CallingConvention = CallingConvention.Cdecl)]
 		static extern void epsara_data_matrix_max_index(IntPtr raw, out int imax, out int jmax);
 
 		public void MaxIndex(out int imax, out int jmax) {
 			epsara_data_matrix_max_index(Handle, out imax, out jmax);
 		}
 
-		[DllImport("libepsara-0.dll")]
+		[DllImport("libepsara-0.dll", CallingConvention = CallingConvention.Cdecl)]
 		static extern void epsara_data_matrix_minmax(IntPtr raw, out double min_out, out double max_out);
 
 		public void Minmax(out double min_out, out double max_out) {
 			epsara_data_matrix_minmax(Handle, out min_out, out max_out);
 		}
 
-		[DllImport("libepsara-0.dll")]
+		[DllImport("libepsara-0.dll", CallingConvention = CallingConvention.Cdecl)]
 		static extern int epsara_data_matrix_add_constant(IntPtr raw, double x);
 
 		public int AddConstant(double x) {
@@ -101,14 +121,14 @@ namespace Epsara {
 			return ret;
 		}
 
-		[DllImport("libepsara-0.dll")]
+		[DllImport("libepsara-0.dll", CallingConvention = CallingConvention.Cdecl)]
 		static extern void epsara_data_matrix_set_identity(IntPtr raw);
 
 		public void SetIdentity() {
 			epsara_data_matrix_set_identity(Handle);
 		}
 
-		[DllImport("libepsara-0.dll")]
+		[DllImport("libepsara-0.dll", CallingConvention = CallingConvention.Cdecl)]
 		static extern double epsara_data_matrix_max(IntPtr raw);
 
 		public double Max() {
@@ -117,7 +137,7 @@ namespace Epsara {
 			return ret;
 		}
 
-		[DllImport("libepsara-0.dll")]
+		[DllImport("libepsara-0.dll", CallingConvention = CallingConvention.Cdecl)]
 		static extern int epsara_data_matrix_div_elements(IntPtr raw, IntPtr b);
 
 		public int DivElements(Epsara.DataMatrix b) {
@@ -126,21 +146,14 @@ namespace Epsara {
 			return ret;
 		}
 
-		[DllImport("libepsara-0.dll")]
+		[DllImport("libepsara-0.dll", CallingConvention = CallingConvention.Cdecl)]
 		static extern void epsara_data_matrix_minmax_index(IntPtr raw, out int imin, out int jmin, out int imax, out int jmax);
 
 		public void MinmaxIndex(out int imin, out int jmin, out int imax, out int jmax) {
 			epsara_data_matrix_minmax_index(Handle, out imin, out jmin, out imax, out jmax);
 		}
 
-		[DllImport("libepsara-0.dll")]
-		static extern void epsara_data_matrix_set(IntPtr raw, int i, int j, double x);
-
-		public void Set(int i, int j, double x) {
-			epsara_data_matrix_set(Handle, i, j, x);
-		}
-
-		[DllImport("libepsara-0.dll")]
+		[DllImport("libepsara-0.dll", CallingConvention = CallingConvention.Cdecl)]
 		static extern int epsara_data_matrix_swap(IntPtr raw, IntPtr w);
 
 		public int Swap(Epsara.DataMatrix w) {
@@ -149,7 +162,7 @@ namespace Epsara {
 			return ret;
 		}
 
-		[DllImport("libepsara-0.dll")]
+		[DllImport("libepsara-0.dll", CallingConvention = CallingConvention.Cdecl)]
 		static extern int epsara_data_matrix_add(IntPtr raw, IntPtr b);
 
 		public int Add(Epsara.DataMatrix b) {
@@ -158,14 +171,14 @@ namespace Epsara {
 			return ret;
 		}
 
-		[DllImport("libepsara-0.dll")]
+		[DllImport("libepsara-0.dll", CallingConvention = CallingConvention.Cdecl)]
 		static extern void epsara_data_matrix_min_index(IntPtr raw, out int imin, out int jmin);
 
 		public void MinIndex(out int imin, out int jmin) {
 			epsara_data_matrix_min_index(Handle, out imin, out jmin);
 		}
 
-		[DllImport("libepsara-0.dll")]
+		[DllImport("libepsara-0.dll", CallingConvention = CallingConvention.Cdecl)]
 		static extern void epsara_data_matrix_set_all(IntPtr raw, double x);
 
 		public double All { 
@@ -174,16 +187,7 @@ namespace Epsara {
 			}
 		}
 
-		[DllImport("libepsara-0.dll")]
-		static extern double epsara_data_matrix_get(IntPtr raw, int i, int j);
-
-		public double Get(int i, int j) {
-			double raw_ret = epsara_data_matrix_get(Handle, i, j);
-			double ret = raw_ret;
-			return ret;
-		}
-
-		[DllImport("libepsara-0.dll")]
+		[DllImport("libepsara-0.dll", CallingConvention = CallingConvention.Cdecl)]
 		static extern double epsara_data_matrix_min(IntPtr raw);
 
 		public double Min() {
@@ -192,7 +196,7 @@ namespace Epsara {
 			return ret;
 		}
 
-		[DllImport("libepsara-0.dll")]
+		[DllImport("libepsara-0.dll", CallingConvention = CallingConvention.Cdecl)]
 		static extern int epsara_data_matrix_scale(IntPtr raw, double x);
 
 		public int Scale(double x) {
@@ -201,7 +205,7 @@ namespace Epsara {
 			return ret;
 		}
 
-		[DllImport("libepsara-0.dll")]
+		[DllImport("libepsara-0.dll", CallingConvention = CallingConvention.Cdecl)]
 		static extern IntPtr epsara_data_matrix_get_type();
 
 		public static new GLib.GType GType { 
@@ -212,7 +216,7 @@ namespace Epsara {
 			}
 		}
 
-		[DllImport("libepsara-0.dll")]
+		[DllImport("libepsara-0.dll", CallingConvention = CallingConvention.Cdecl)]
 		static extern int epsara_data_matrix_sub(IntPtr raw, IntPtr b);
 
 		public int Sub(Epsara.DataMatrix b) {
@@ -221,7 +225,7 @@ namespace Epsara {
 			return ret;
 		}
 
-		[DllImport("libepsara-0.dll")]
+		[DllImport("libepsara-0.dll", CallingConvention = CallingConvention.Cdecl)]
 		static extern int epsara_data_matrix_copy(IntPtr raw, IntPtr src);
 
 		public int Copy(Epsara.DataMatrix src) {
