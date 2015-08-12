@@ -14,7 +14,7 @@ namespace Epsara {
 		protected DataSimpleMeasurement(GLib.GType gtype) : base(gtype) {}
 		public DataSimpleMeasurement(IntPtr raw) : base(raw) {}
 
-		[DllImport("libepsara-0.dll", CallingConvention = CallingConvention.Cdecl)]
+		[DllImport("libepsara-0.dll")]
 		static extern IntPtr epsara_data_simple_measurement_new();
 
 		public DataSimpleMeasurement () : base (IntPtr.Zero)

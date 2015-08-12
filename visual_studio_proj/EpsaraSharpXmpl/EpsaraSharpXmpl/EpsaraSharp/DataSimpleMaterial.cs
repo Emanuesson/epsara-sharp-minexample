@@ -14,9 +14,16 @@ namespace Epsara {
 		protected DataSimpleMaterial(GLib.GType gtype) : base(gtype) {}
 		public DataSimpleMaterial(IntPtr raw) : base(raw) {}
 
-		protected DataSimpleMaterial() : base(IntPtr.Zero)
+		[DllImport("libepsara-0.dll")]
+		static extern IntPtr epsara_data_simple_material_new();
+
+		public DataSimpleMaterial () : base (IntPtr.Zero)
 		{
-			CreateNativeObject (new string [0], new GLib.Value [0]);
+			if (GetType () != typeof (DataSimpleMaterial)) {
+				CreateNativeObject (new string [0], new GLib.Value[0]);
+				return;
+			}
+			Raw = epsara_data_simple_material_new();
 		}
 
 		[GLib.Property ("q-value")]

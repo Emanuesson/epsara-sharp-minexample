@@ -19,6 +19,216 @@ namespace Epsara {
 			CreateNativeObject (new string [0], new GLib.Value [0]);
 		}
 
+		[GLib.Property ("energy-per-channel-square")]
+		public double EnergyPerChannelSquare {
+			get {
+				GLib.Value val = GetProperty ("energy-per-channel-square");
+				double ret = (double) val;
+				val.Dispose ();
+				return ret;
+			}
+			set {
+				GLib.Value val = new GLib.Value(value);
+				SetProperty("energy-per-channel-square", val);
+				val.Dispose ();
+			}
+		}
+
+		[GLib.Property ("energy-resolution")]
+		public double EnergyResolution {
+			get {
+				GLib.Value val = GetProperty ("energy-resolution");
+				double ret = (double) val;
+				val.Dispose ();
+				return ret;
+			}
+			set {
+				GLib.Value val = new GLib.Value(value);
+				SetProperty("energy-resolution", val);
+				val.Dispose ();
+			}
+		}
+
+		[GLib.Property ("det-angle-theta")]
+		public double DetAngleTheta {
+			get {
+				GLib.Value val = GetProperty ("det-angle-theta");
+				double ret = (double) val;
+				val.Dispose ();
+				return ret;
+			}
+			set {
+				GLib.Value val = new GLib.Value(value);
+				SetProperty("det-angle-theta", val);
+				val.Dispose ();
+			}
+		}
+
+		[GLib.Property ("sharping-time")]
+		public double SharpingTime {
+			get {
+				GLib.Value val = GetProperty ("sharping-time");
+				double ret = (double) val;
+				val.Dispose ();
+				return ret;
+			}
+			set {
+				GLib.Value val = new GLib.Value(value);
+				SetProperty("sharping-time", val);
+				val.Dispose ();
+			}
+		}
+
+		[GLib.Property ("energy-offset")]
+		public double EnergyOffset {
+			get {
+				GLib.Value val = GetProperty ("energy-offset");
+				double ret = (double) val;
+				val.Dispose ();
+				return ret;
+			}
+			set {
+				GLib.Value val = new GLib.Value(value);
+				SetProperty("energy-offset", val);
+				val.Dispose ();
+			}
+		}
+
+		[GLib.Property ("det-angle-phi")]
+		public double DetAnglePhi {
+			get {
+				GLib.Value val = GetProperty ("det-angle-phi");
+				double ret = (double) val;
+				val.Dispose ();
+				return ret;
+			}
+			set {
+				GLib.Value val = new GLib.Value(value);
+				SetProperty("det-angle-phi", val);
+				val.Dispose ();
+			}
+		}
+
+		[GLib.Property ("min-channel")]
+		public int MinChannel {
+			get {
+				GLib.Value val = GetProperty ("min-channel");
+				int ret = (int) val;
+				val.Dispose ();
+				return ret;
+			}
+			set {
+				GLib.Value val = new GLib.Value(value);
+				SetProperty("min-channel", val);
+				val.Dispose ();
+			}
+		}
+
+		[GLib.Property ("solid-angle")]
+		public double SolidAngle {
+			get {
+				GLib.Value val = GetProperty ("solid-angle");
+				double ret = (double) val;
+				val.Dispose ();
+				return ret;
+			}
+			set {
+				GLib.Value val = new GLib.Value(value);
+				SetProperty("solid-angle", val);
+				val.Dispose ();
+			}
+		}
+
+		[GLib.Property ("energy-per-channel")]
+		public double EnergyPerChannel {
+			get {
+				GLib.Value val = GetProperty ("energy-per-channel");
+				double ret = (double) val;
+				val.Dispose ();
+				return ret;
+			}
+			set {
+				GLib.Value val = new GLib.Value(value);
+				SetProperty("energy-per-channel", val);
+				val.Dispose ();
+			}
+		}
+
+		[GLib.Property ("pulse-rate")]
+		public double PulseRate {
+			get {
+				GLib.Value val = GetProperty ("pulse-rate");
+				double ret = (double) val;
+				val.Dispose ();
+				return ret;
+			}
+			set {
+				GLib.Value val = new GLib.Value(value);
+				SetProperty("pulse-rate", val);
+				val.Dispose ();
+			}
+		}
+
+		[GLib.Property ("spectrum")]
+		public IntPtr Spectrum {
+			get {
+				GLib.Value val = GetProperty ("spectrum");
+				IntPtr ret = (IntPtr) val;
+				val.Dispose ();
+				return ret;
+			}
+			set {
+				GLib.Value val = new GLib.Value(value);
+				SetProperty("spectrum", val);
+				val.Dispose ();
+			}
+		}
+
+		[GLib.Property ("max-channel")]
+		public int MaxChannel {
+			get {
+				GLib.Value val = GetProperty ("max-channel");
+				int ret = (int) val;
+				val.Dispose ();
+				return ret;
+			}
+			set {
+				GLib.Value val = new GLib.Value(value);
+				SetProperty("max-channel", val);
+				val.Dispose ();
+			}
+		}
+
+		[GLib.Property ("detector-dead-layer")]
+		public Epsara.DataMaterial DetectorDeadLayer {
+			get {
+				GLib.Value val = GetProperty ("detector-dead-layer");
+				Epsara.DataMaterial ret = (Epsara.DataMaterial) val;
+				val.Dispose ();
+				return ret;
+			}
+			set {
+				GLib.Value val = new GLib.Value(value);
+				SetProperty("detector-dead-layer", val);
+				val.Dispose ();
+			}
+		}
+
+		[GLib.Property ("energy-per-channel-cube")]
+		public double EnergyPerChannelCube {
+			get {
+				GLib.Value val = GetProperty ("energy-per-channel-cube");
+				double ret = (double) val;
+				val.Dispose ();
+				return ret;
+			}
+			set {
+				GLib.Value val = new GLib.Value(value);
+				SetProperty("energy-per-channel-cube", val);
+				val.Dispose ();
+			}
+		}
+
 		[DllImport("libepsara-0.dll")]
 		static extern IntPtr epsara_data_detector_get_type();
 

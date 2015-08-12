@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GLib;
 using Epsara;
 
 namespace EpsaraSharpXmpl
@@ -25,13 +26,10 @@ namespace EpsaraSharpXmpl
             Console.WriteLine("new_vector[2] = {0}", new_vector[2]);
             Console.WriteLine("new_vector[31] = {0}", new_vector[31]);
 
-            // Keep the console window open in debug mode.
-            Console.WriteLine("Press any key to exit.");
-            Console.ReadKey();
-
-            DataSimpleMaterial gallium = (DataSimpleMaterial)Activator.CreateInstance(typeof(DataSimpleMaterial), true);
-            DataSimpleMaterial nitrogen = (DataSimpleMaterial)Activator.CreateInstance(typeof(DataSimpleMaterial), true);
-            DataSimpleMeasurement a_simple_measurement = (DataSimpleMeasurement)Activator.CreateInstance(typeof(DataSimpleMeasurement), true);
+            DataSimpleMaterial gallium = new DataSimpleMaterial();
+            DataSimpleMaterial nitrogen = new DataSimpleMaterial();
+            DataSimpleMeasurement a_simple_measurement = new DataSimpleMeasurement();
+            DataMatrix result_matrix;
 
             a_simple_measurement.AtomicNoIncIon = 2;
             a_simple_measurement.MassNoIncIon = 4;
@@ -75,6 +73,21 @@ namespace EpsaraSharpXmpl
             nitrogen.RbsActive = true;
             nitrogen.NraActive = false;
 
+            a_simple_measurement.Add((GLib.Object)gallium);
+            a_simple_measurement.Add((GLib.Object)nitrogen);
+            a_simple_measurement.Calculate();
+
+            result_matrix = a_simple_measurement.CalcedSpectrum;
+
+            Console.WriteLine("Channel Yield");
+            for (int i = 0; i < result_matrix.Columns; i++)
+            {
+                Console.WriteLine("{0}    {1}", result_matrix[ 0, i], result_matrix[2, i]);
+            }
+
+            // Keep the console window open in debug mode.
+            Console.WriteLine("Press any key to exit.");
+            Console.ReadKey();
 
         }
     }

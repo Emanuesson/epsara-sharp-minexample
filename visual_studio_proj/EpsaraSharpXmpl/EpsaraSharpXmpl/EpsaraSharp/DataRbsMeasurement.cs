@@ -19,7 +19,7 @@ namespace Epsara {
 			CreateNativeObject (new string [0], new GLib.Value [0]);
 		}
 
-		[DllImport("libepsara-0.dll", CallingConvention = CallingConvention.Cdecl)]
+		[DllImport("libepsara-0.dll")]
 		static extern IntPtr epsara_data_rbs_measurement_get_detectors(IntPtr raw);
 
 		public GLib.SList Detectors { 
