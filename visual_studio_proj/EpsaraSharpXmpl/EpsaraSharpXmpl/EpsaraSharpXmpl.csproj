@@ -51,14 +51,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EpsaraSharp\EpsaraDataVector.cs" />
-    <Compile Include="EpsaraSharp\ObjectManager.cs" />
+    <Compile Include="EpsaraSharp\Data.cs" />
+    <Compile Include="EpsaraSharp\DataBeam.cs" />
+    <Compile Include="EpsaraSharp\DataDetector.cs" />
+    <Compile Include="EpsaraSharp\DataIsotopeReaction.cs" />
+    <Compile Include="EpsaraSharp\DataMaterial.cs" />
+    <Compile Include="EpsaraSharp\DataMatrix.cs" />
+    <Compile Include="EpsaraSharp\DataMeasurement.cs" />
+    <Compile Include="EpsaraSharp\DataMeasurementForallCallback.cs" />
+    <Compile Include="EpsaraSharp\DataRbsMeasurement.cs" />
+    <Compile Include="EpsaraSharp\DataSimpleMaterial.cs" />
+    <Compile Include="EpsaraSharp\DataSimpleMeasurement.cs" />
+    <Compile Include="EpsaraSharp\DataVector.cs" />
+    <Compile Include="EpsaraSharp\EpsaraSharp.DataMeasurementForallCallbackNative.cs" />
+    <Compile Include="EpsaraSharp\PhyscoreOdeInputParameter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
